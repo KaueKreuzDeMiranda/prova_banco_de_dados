@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+
+    container_name: mysql_industrial     
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: —---------- 
+      MYSQL_DATABASE: —---------- 
+      MYSQL_USER: —---------- 
+      MYSQL_PASSWORD: —---------- 
+
+    ports:
+      - —---------- (observe o espaço antes do traço)
+
+    volumes:
+      - dados_mysql:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
+
+    networks:
+      - rede_industrial
+
+volumes:
+  dados_mysql:
+
+networks:
+  rede_industrial:
+    driver: bridge
